@@ -1,12 +1,14 @@
 const express = require('express')
 const app = express()
 const PORT = 5555
+const cors = require('cors')
 require('dotenv').config()
 const productRoute = require('./routes/product.route')
 const db = require('./config/db')
 app.get('/' , (req ,res)=>{
       res.send("Hello world")
 })
+app.use(cors())
 app.use(express.json())
 app.use('/api' , productRoute)
 db()
